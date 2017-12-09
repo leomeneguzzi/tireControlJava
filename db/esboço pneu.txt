@@ -1,0 +1,33 @@
+**Módulo de controle de pneus
+
+*Informações da carcaça pneu "novo"
+	+Marca
+		+Número de recapagens previstas
+	+Modelo
+	+Número de identifição
+	+Número de recapagens previstas
+	
+	+Situação da carcaça
+		-Montado: rodando
+		-Desmontado: parado, em estoque
+			-irá usar como base a ultima recapagem
+		-Morto - inutilizado
+
+*Recapagem do pneu  (inclui a primeira vida: 0)
+	+Número da recapagem atual
+		-Número da recapagem existe, porém ele é sugerido
+	+Data da compra/recapagem
+	+Valor
+	+Tipo da banda	
+	//
+	+Data de montagem
+	+Quilometragem do caminhão quando foi montado
+	+Roda de montagem(Dianteiro, centro e truque...)
+	//
+	+Data de desmontagem
+	+Quilometragem do caminhão quando foi desmontado
+	+Justificativa da desmontagem (...) 
+		-Estourado: fim do uso antes do fim da vida
+		-Invalidado por problemas mecanicos
+		-Fim da vida: fluxo normal da vida útil da recapagem
+	+Observação da desmontagem	
