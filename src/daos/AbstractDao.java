@@ -39,7 +39,7 @@ public abstract class AbstractDao<T> {
         }
     }
  
-    public void update(T instance) {
+    public void save(T instance) {
         try {
             if (!sessionFactory.getCurrentSession().getTransaction().isActive())
                 sessionFactory.getCurrentSession().getTransaction().begin();            
@@ -63,7 +63,7 @@ public abstract class AbstractDao<T> {
         }
     }
  
-    public void create(T instance) {
+    /*public void create(T instance) {
         try {
             if (!sessionFactory.getCurrentSession().getTransaction().isActive())
                 sessionFactory.getCurrentSession().getTransaction().begin();            
@@ -73,7 +73,7 @@ public abstract class AbstractDao<T> {
             sessionFactory.getCurrentSession().getTransaction().rollback();
             throw re;
         }
-    }
+    }*/
  
     public T find(Object primarykey) {
         try {
