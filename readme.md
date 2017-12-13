@@ -1,6 +1,6 @@
 # Tire Control Java
 
-This project is a prototype of a tire control system using Java Swing with Hibernate. Because it is a prototype, this project will be changed inconsistently and is not an example of software being followed and will eventually be discontinued when the main project is started.
+This project is a prototype of a tire control system using JavaFX with Hibernate. Because it is a prototype, this project will be changed inconsistently and is not an example of software being followed and will eventually be discontinued when the main project is started.
 
 ## Getting Started
 
