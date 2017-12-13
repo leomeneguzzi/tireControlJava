@@ -6,8 +6,8 @@
 package controllers;
 
 import utils.EncapsulatedView;
-import daos.TireBrandDao;
-import entities.TireBrand;
+import daos.TireModelDao;
+import entities.TireModel;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -21,7 +21,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author leonardo
  */
-public class TireBrandController extends AbstractController {
+public class TireModelController extends AbstractController {
 
     @FXML
     private AnchorPane apForm;
@@ -34,16 +34,16 @@ public class TireBrandController extends AbstractController {
         this.encapViews = new ArrayList<>();
         try {
             this.encapViews.add(
-                    EncapsulatedView.EncapsulatedViewBuilder.<TireBrand>start()
+                    EncapsulatedView.EncapsulatedViewBuilder.<TireModel>start()
                             .apForm(this.apForm)
                             .apTableView(this.apTableView)
-                            .dao(new TireBrandDao())
-                            .entity(new TireBrand())
-                            .includes(new String[]{"name", "suggestionNumberRetreads"})
+                            .dao(new TireModelDao())
+                            .entity(new TireModel())
+                            .includes(new String[]{"name"})
                             .build()
             );
         } catch (IllegalAccessException | InstantiationException ex) {
-            Logger.getLogger(TireBrandController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TireModelController.class.getName()).log(Level.SEVERE, null, ex);
         }
         initializeView();
     }

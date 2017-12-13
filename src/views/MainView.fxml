@@ -14,7 +14,7 @@
         <Menu mnemonicParsing="false" text="Cadastros">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Marca do pneu" fx:id="miTireBrand" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Modelo do pneu" fx:id="miTireModel" />
             <Menu mnemonicParsing="false" text="Open Recent" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Close" />

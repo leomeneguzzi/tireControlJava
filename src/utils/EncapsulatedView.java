@@ -18,7 +18,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class EncapsulatedView<E> {
 
-    //private Class<E> entityClass;
+    
     private AnchorPane apForm;
     private AnchorPane apTableView;
 
@@ -34,17 +34,10 @@ public class EncapsulatedView<E> {
         this.apForm = EncapViewBuilder.apForm;
         this.apTableView = EncapViewBuilder.apTableView;
         this.dao = EncapViewBuilder.dao;
-        this.entity = (E) EncapViewBuilder.entityClass.newInstance();
+        this.entity = (E) EncapViewBuilder.entity;
         this.includes = EncapViewBuilder.includes;
     }
 
-    /*public Class<E> getEntityClass() {
-        return entityClass;
-    }
-
-    public void setEntityClass(Class<E> entityClass) {
-        this.entityClass = entityClass;
-    }*/
     public AnchorPane getApForm() {
         return apForm;
     }
@@ -67,6 +60,7 @@ public class EncapsulatedView<E> {
 
     public void setEntity(E entity) {
         this.entity = entity;
+        this.getForm().setSource(this.entity);
     }
 
     public AbstractDao getDao() {
@@ -106,7 +100,7 @@ public class EncapsulatedView<E> {
         //private Class<E> entityClass;
         private AnchorPane apForm;
         private AnchorPane apTableView;
-        private Class<E> entityClass;
+        private E entity;
         private AbstractDao dao;
         private String includes[];
 
@@ -127,8 +121,8 @@ public class EncapsulatedView<E> {
             return this;
         }
 
-        public EncapsulatedViewBuilder entityClass(Class<E> entityClass) {
-            this.entityClass = entityClass;
+        public EncapsulatedViewBuilder entity(E entity) {
+            this.entity = entity;
             return this;
         }
 

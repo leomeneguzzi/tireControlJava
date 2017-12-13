@@ -9,6 +9,8 @@ import utils.EncapsulatedView;
 import com.dooapp.fxform.builder.FXFormBuilder;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -32,7 +34,6 @@ public abstract class AbstractController implements Initializable {
             encapView.setTableView(ModelTableViewBuilder.buildUpon(encapView.getEntity().getClass(), encapView.getApTableView()));
             encapView.getTableView().setOnMouseClicked((MouseEvent event) -> {
                 encapView.setEntity(encapView.getEntity().getClass().cast(encapView.getTableView().getSelectionModel().getSelectedItem()));
-                encapView.getForm().setSource(encapView.getEntity());
             });
             encapView.getTableView().setItems(FXCollections.observableArrayList(encapView.getDao().findAll()));
             createForm(encapView);
@@ -43,12 +44,33 @@ public abstract class AbstractController implements Initializable {
         Button btSave = new Button(bundle.getString("save"));
         btSave.setOnAction((ActionEvent event) -> {
             encapView.getDao().save(encapView.getEntity());
+            if (!encapView.getTableView().getItems().contains(encapView.getEntity())) {
+                encapView.getTableView().getItems().add(encapView.getEntity());
+            }
             encapView.getTableView().refresh();
+        });
+
+        Button btDelete = new Button(bundle.getString("delete"));
+        btDelete.setOnAction((ActionEvent event) -> {
+            encapView.getDao().delete(encapView.getEntity());
+            if (encapView.getTableView().getItems().contains(encapView.getEntity())) {
+                encapView.getTableView().getItems().remove(encapView.getEntity());
+            }
+            encapView.getTableView().refresh();
+        });
+
+        Button btClean = new Button(bundle.getString("clean"));
+        btClean.setOnAction((ActionEvent event) -> {
+            try {
+                encapView.setEntity(encapView.getEntity().getClass().newInstance());
+            } catch (InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(AbstractController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
 
         encapView.setForm(new FXFormBuilder<>()
                 .source(encapView.getEntity())
-                .categorizeAndInclude(encapView.getIncludes())
+                .include(encapView.getIncludes())
                 .resourceBundle(bundle)
                 .build()
         );
@@ -57,6 +79,10 @@ public abstract class AbstractController implements Initializable {
         encapView.getForm().setLayoutX(50);
         btSave.setLayoutY(50);
         btSave.setLayoutX(400);
-        encapView.getApForm().getChildren().addAll(encapView.getForm(), btSave);
+        btClean.setLayoutY(100);
+        btClean.setLayoutX(400);
+        btDelete.setLayoutY(150);
+        btDelete.setLayoutX(400);
+        encapView.getApForm().getChildren().addAll(encapView.getForm(), btSave, btDelete, btClean);
     }
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<SplitPane dividerPositions="0.5" focusTraversable="true" minHeight="-1.0" minWidth="-1.0" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <items>
+    <AnchorPane id="gpAnchorPane" fx:id="apForm" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+      <padding>
+        <Insets fx:id="x1" />
+      </padding>
+    </AnchorPane>
+    <AnchorPane fx:id="apTableView" minHeight="-1.0" minWidth="-1.0" padding="$x1" prefHeight="-1.0" prefWidth="-1.0" />
+  </items>
+</SplitPane>
