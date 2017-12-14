@@ -1,4 +1,4 @@
-## To see the complete documentation [click here](MDDocDB/Tables.md)
+## To see the complete documentation [click here](MDDocDB/readme.md)
 
 #Schema documentation
 
