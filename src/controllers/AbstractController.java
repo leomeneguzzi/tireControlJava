@@ -33,7 +33,9 @@ public abstract class AbstractController implements Initializable {
         for (EncapsulatedView encapView : encapViews) {
             encapView.setTableView(ModelTableViewBuilder.buildUpon(encapView.getEntity().getClass(), encapView.getApTableView()));
             encapView.getTableView().setOnMouseClicked((MouseEvent event) -> {
-                encapView.setEntity(encapView.getEntity().getClass().cast(encapView.getTableView().getSelectionModel().getSelectedItem()));
+                if(encapView.getTableView().getSelectionModel().getSelectedItem() != null){
+                    encapView.setEntity(encapView.getEntity().getClass().cast(encapView.getTableView().getSelectionModel().getSelectedItem()));
+                }
             });
             encapView.getTableView().setItems(FXCollections.observableArrayList(encapView.getDao().findAll()));
             createForm(encapView);

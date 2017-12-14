@@ -7,8 +7,6 @@ package utils;
 
 import com.dooapp.fxform.FXForm;
 import daos.AbstractDao;
-import daos.TireBrandDao;
-import entities.TireBrand;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 

@@ -15,16 +15,11 @@
           <items>
             <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Marca do pneu" fx:id="miTireBrand" />
             <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Modelo do pneu" fx:id="miTireModel" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Situação do pneu" fx:id="miTireSituation" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Tipo da banda" fx:id="miBandType" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Local de montagem" fx:id="miMountLocation" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Caminhão" fx:id="miTruck" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Razão da desmontagem" fx:id="miUnmountReason" />
           </items>
         </Menu>
       </menus>

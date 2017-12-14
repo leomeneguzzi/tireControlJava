@@ -64,6 +64,7 @@ public class MainController implements Initializable {
         tab.setText(bundle.getString(owner.toLowerCase()));
         tab.setContent(loader.load());
         this.tabPane.getTabs().add(tab);
+        this.tabPane.getSelectionModel().select(tab);
     }
 
 }
