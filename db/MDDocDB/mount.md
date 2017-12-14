@@ -1,6 +1,6 @@
 
 
-# ![logo](../../../../../Images/table.svg) mount
+# ![logo](Images/table.svg) mount
 
 ## <a name="#Description"></a>Description
 > This table is used to set the times when the tire is mount. The relation with retread is because the mount is based in the retread, not in the tire.
@@ -28,10 +28,10 @@
 ## <a name="#Columns"></a>Columns
 |Key|Name|Data Type|Length|Precision|Scale|Not Null|Auto Increment|Default|Virtual|Unsigned|Zerofill|Binary|Description
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---
-|[![Primary Key PRIMARY](../../../../../Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](../../../../../Images/index.svg)](#Indexes)|id|INT||11||True|False||False|False|False|False|Internal identification of records for this table|
-|[![Foreign Keys fk_mount_truck1: ](../../../../../Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_truck1_idx](../../../../../Images/index.svg)](#Indexes)|truck_id|INT||11||True|False||False|False|False|False||
-|[![Foreign Keys fk_mount_retread1: ](../../../../../Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_retread1_idx](../../../../../Images/index.svg)](#Indexes)|retread_id|INT||11||True|False||False|False|False|False||
-|[![Foreign Keys fk_mount_locationMount1: ](../../../../../Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_locationMount1_idx](../../../../../Images/index.svg)](#Indexes)|mountLocation_id|INT||11||True|False||False|False|False|False||
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|False||False|False|False|False|Internal identification of records for this table|
+|[![Foreign Keys fk_mount_truck1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_truck1_idx](Images/index.svg)](#Indexes)|truck_id|INT||11||True|False||False|False|False|False||
+|[![Foreign Keys fk_mount_retread1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_retread1_idx](Images/index.svg)](#Indexes)|retread_id|INT||11||True|False||False|False|False|False||
+|[![Foreign Keys fk_mount_locationMount1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_locationMount1_idx](Images/index.svg)](#Indexes)|mountLocation_id|INT||11||True|False||False|False|False|False||
 ||mountDate|DATETIME||||True|False||False|False|False|False|Date of tire mounting|
 ||mountKm|DOUBLE||||True|False||False|False|False|False|Truck mileage on the mount|
 
@@ -41,7 +41,7 @@
 ||fk_mount_locationMount1_idx|mountLocation_id|False|BTREE||
 ||fk_mount_retread1_idx|retread_id|False|BTREE||
 ||fk_mount_truck1_idx|truck_id|False|BTREE||
-|[![Primary Key PRIMARY](../../../../../Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
 
 ## <a name="#ForeignKeys"></a>Foreign Keys
 |Name|Columns|Delete Rule|Update Rule

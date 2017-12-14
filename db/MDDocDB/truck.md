@@ -1,6 +1,6 @@
 
 
-# ![logo](../../../../../Images/table.svg) truck
+# ![logo](Images/table.svg) truck
 
 ## <a name="#Description"></a>Description
 > Used to identify the truck that the tire will be mounted.
@@ -28,13 +28,13 @@
 ## <a name="#Columns"></a>Columns
 |Key|Name|Data Type|Length|Precision|Scale|Not Null|Auto Increment|Default|Virtual|Unsigned|Zerofill|Binary|Description
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---
-|[![Primary Key PRIMARY](../../../../../Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](../../../../../Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False|Internal identification of records for this table|
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False|Internal identification of records for this table|
 ||plate|VARCHAR|50|||True|False||False|False|False|False|Plate truck|
 
 ## <a name="#Indexes"></a>Indexes
 |Key|Name|Columns|Unique|Type|Key Lengths
 |---|---|---|---|---|---
-|[![Primary Key PRIMARY](../../../../../Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
 
 ## <a name="#SqlScript"></a>SQL Script
 ```SQL

@@ -1,6 +1,6 @@
 
 
-# ![logo](../../../../../Images/table.svg) tire
+# ![logo](Images/table.svg) tire
 
 ## <a name="#Description"></a>Description
 > This table represent the tire's carcass.
@@ -28,10 +28,10 @@
 ## <a name="#Columns"></a>Columns
 |Key|Name|Data Type|Length|Precision|Scale|Not Null|Auto Increment|Default|Virtual|Unsigned|Zerofill|Binary|Description
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---
-|[![Primary Key PRIMARY](../../../../../Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](../../../../../Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False|Internal identification of records for this table|
-|[![Foreign Keys fk_tire_brand: ](../../../../../Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_tire_brand_idx](../../../../../Images/index.svg)](#Indexes)|tireBrand_id|INT||11||True|False||False|False|False|False||
-|[![Foreign Keys fk_tire_model1: ](../../../../../Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_tire_model1_idx](../../../../../Images/index.svg)](#Indexes)|tireModel_id|INT||11||True|False||False|False|False|False||
-|[![Foreign Keys fk_tire_tireSituation1: ](../../../../../Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_tire_tireSituation1_idx](../../../../../Images/index.svg)](#Indexes)|tireSituation_id|INT||11||True|False||False|False|False|False||
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False|Internal identification of records for this table|
+|[![Foreign Keys fk_tire_brand: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_tire_brand_idx](Images/index.svg)](#Indexes)|tireBrand_id|INT||11||True|False||False|False|False|False||
+|[![Foreign Keys fk_tire_model1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_tire_model1_idx](Images/index.svg)](#Indexes)|tireModel_id|INT||11||True|False||False|False|False|False||
+|[![Foreign Keys fk_tire_tireSituation1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_tire_tireSituation1_idx](Images/index.svg)](#Indexes)|tireSituation_id|INT||11||True|False||False|False|False|False||
 ||physicalIdentification|INT||11||True|False||False|False|False|False|External identification of records for this table. The user sets this value|
 ||expectedNumberRetreads|INT||11||True|False||False|False|False|False|Expected number of retreads tire|
 
@@ -41,7 +41,7 @@
 ||fk_tire_brand_idx|tireBrand_id|False|BTREE||
 ||fk_tire_model1_idx|tireModel_id|False|BTREE||
 ||fk_tire_tireSituation1_idx|tireSituation_id|False|BTREE||
-|[![Primary Key PRIMARY](../../../../../Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
 
 ## <a name="#ForeignKeys"></a>Foreign Keys
 |Name|Columns|Delete Rule|Update Rule

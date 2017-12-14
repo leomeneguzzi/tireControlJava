@@ -1,6 +1,6 @@
 
 
-# ![logo](../../../../../Images/table.svg) unmountreason
+# ![logo](Images/table.svg) unmountreason
 
 ## <a name="#Description"></a>Description
 > The unmount have a reason. Ex: mechanical problems, end of life, factory problem, etc.
@@ -28,14 +28,14 @@
 ## <a name="#Columns"></a>Columns
 |Key|Name|Data Type|Length|Precision|Scale|Not Null|Auto Increment|Default|Virtual|Unsigned|Zerofill|Binary|Description
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---
-|[![Primary Key PRIMARY](../../../../../Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](../../../../../Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False||
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False||
 ||unmountReason|VARCHAR|200|||True|False||False|False|False|False|Reason for unmount the tire|
 ||description|VARCHAR|1000|||True|False||False|False|False|False|Reason description|
 
 ## <a name="#Indexes"></a>Indexes
 |Key|Name|Columns|Unique|Type|Key Lengths
 |---|---|---|---|---|---
-|[![Primary Key PRIMARY](../../../../../Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
 
 ## <a name="#SqlScript"></a>SQL Script
 ```SQL
