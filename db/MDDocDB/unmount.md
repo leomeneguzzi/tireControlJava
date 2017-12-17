@@ -28,18 +28,19 @@
 ## <a name="#Columns"></a>Columns
 |Key|Name|Data Type|Length|Precision|Scale|Not Null|Auto Increment|Default|Virtual|Unsigned|Zerofill|Binary|Description
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---
-|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|False||False|False|False|False|Internal identification of records for this table|
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False|Internal identification of records for this table|
 |[![Foreign Keys fk_unmount_mount1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_unmount_mount1_idx](Images/index.svg)](#Indexes)|mount_id|INT||11||True|False||False|False|False|False||
 |[![Foreign Keys fk_mount_unmountReason10: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_unmountReason1_idx](Images/index.svg)](#Indexes)|unmountReason_id|INT||11||True|False||False|False|False|False||
-||unmountDate|DATETIME||||True|False||False|False|False|False|Date of tire unmounting|
-||unmountKm|DOUBLE||||True|False||False|False|False|False|Truck mileage on the unmount|
-||unmountNote|VARCHAR|1000|||False|False|NULL|False|False|False|False||
+||date|DATETIME||||True|False||False|False|False|False|Date of tire unmounting|
+||km|DOUBLE||||True|False||False|False|False|False|Truck mileage on the unmount|
+||note|VARCHAR|1000|||False|False|NULL|False|False|False|False||
 
 ## <a name="#Indexes"></a>Indexes
 |Key|Name|Columns|Unique|Type|Key Lengths
 |---|---|---|---|---|---
 ||fk_mount_unmountReason1_idx|unmountReason_id|False|BTREE||
 ||fk_unmount_mount1_idx|mount_id|False|BTREE||
+||mount_id_unique|mount_id|True|BTREE||
 |[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)|PRIMARY|id|True|BTREE||
 
 ## <a name="#ForeignKeys"></a>Foreign Keys
@@ -51,15 +52,16 @@
 ## <a name="#SqlScript"></a>SQL Script
 ```SQL
 CREATE TABLE unmount (
-  id INT(11) NOT NULL COMMENT 'Internal identification of records for this table',
+  id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Internal identification of records for this table',
   mount_id INT(11) NOT NULL,
   unmountReason_id INT(11) NOT NULL,
-  unmountDate DATETIME NOT NULL COMMENT 'Date of tire unmounting',
-  unmountKm DOUBLE NOT NULL COMMENT 'Truck mileage on the unmount',
-  unmountNote VARCHAR(1000) DEFAULT NULL,
+  date DATETIME NOT NULL COMMENT 'Date of tire unmounting',
+  km DOUBLE NOT NULL COMMENT 'Truck mileage on the unmount',
+  note VARCHAR(1000) DEFAULT NULL,
   PRIMARY KEY (id),
   INDEX fk_mount_unmountReason1_idx (unmountReason_id),
   INDEX fk_unmount_mount1_idx (mount_id),
+  UNIQUE INDEX mount_id_UNIQUE (mount_id),
   CONSTRAINT fk_mount_unmountReason10 FOREIGN KEY (unmountReason_id)
     REFERENCES unmountreason(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT fk_unmount_mount1 FOREIGN KEY (mount_id)

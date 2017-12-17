@@ -29,7 +29,7 @@
 |Key|Name|Data Type|Length|Precision|Scale|Not Null|Auto Increment|Default|Virtual|Unsigned|Zerofill|Binary|Description
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---
 |[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False|Internal identification of records for this table|
-||mountLocation|VARCHAR|200|||True|False||False|False|False|False|Mount location tire in the truck|
+||name|VARCHAR|200|||True|False||False|False|False|False|Mount location tire in the truck|
 
 ## <a name="#Indexes"></a>Indexes
 |Key|Name|Columns|Unique|Type|Key Lengths
@@ -40,7 +40,7 @@
 ```SQL
 CREATE TABLE mountlocation (
   id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Internal identification of records for this table',
-  mountLocation VARCHAR(200) NOT NULL COMMENT 'Mount location tire in the truck',
+  name VARCHAR(200) NOT NULL COMMENT 'Mount location tire in the truck',
   PRIMARY KEY (id)
 )
 ENGINE = INNODB

@@ -1,13 +1,13 @@
-## To see the complete documentation [click here](MDDocDB/readme.md)
+### To see the complete documentation [click here](MDDocDB/readme.md)
 
-#Schema documentation
+## Schema documentation
 
 ___
-##Table: `tire`
+## Table: `tire`
 
-###Description: `This table represent the tire's carcass.`
+### Description: `This table represent the tire's carcass.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
@@ -29,11 +29,11 @@ ___
 | fk_tire_tireSituation1_idx | `tireSituation_id` | INDEX |   |
 ___
 
-##Table: `tireBrand`
+## Table: `tireBrand`
 
-###Description: `This table store tires brands.`
+### Description: `This table store tires brands.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
@@ -49,11 +49,11 @@ ___
 | PRIMARY | `id` | PRIMARY |   |
 ___
 
-##Table: `tireModel`
+## Table: `tireModel`
 
-###Description: `This table store tires models.`
+### Description: `This table store tires models.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
@@ -68,11 +68,11 @@ ___
 | PRIMARY | `id` | PRIMARY |   |
 ___
 
-##Table: `tireSituation`
+## Table: `tireSituation`
 
-###Description: `This table is designed to set a current tire's situation. Ex: mounted, unmounted, died, unavailable, etc.`
+### Description: `This table is designed to set a current tire's situation. Ex: mounted, unmounted, died, unavailable, etc.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
@@ -88,11 +88,11 @@ ___
 | PRIMARY | `id` | PRIMARY |   |
 ___
 
-##Table: `retread`
+## Table: `retread`
 
-###Description: `This table store the retreads made on the tire.`
+### Description: `This table store the retreads made on the tire.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
@@ -113,11 +113,11 @@ ___
 | fk_retread_tire1_idx | `tire_id` | INDEX |   |
 ___
 
-##Table: `bandType`
+## Table: `bandType`
 
-###Description: `This table store tires band types.`
+### Description: `This table store tires band types.`
 
-###Columns: 
+## Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
@@ -132,20 +132,20 @@ ___
 | PRIMARY | `id` | PRIMARY |   |
 ___
 
-##Table: `mount`
+## Table: `mount`
 
-###Description: `This table is used to set the times when the tire is mount. The relation with retread is because the mount is based in the retread, not in the tire.`
+### Description: `This table is used to set the times when the tire is mount. The relation with retread is because the mount is based in the retread, not in the tire.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
-| `id` | INT | PRIMARY, Not null |   | Internal identification of records for this table |
+| `id` | INT | PRIMARY, Auto increments, Not null |   | Internal identification of records for this table |
 | `truck_id` | INT | Not null |   |  **foreign key** to column `id` on table `truck`. |
 | `retread_id` | INT | Not null |   |  **foreign key** to column `id` on table `retread`. |
 | `mountLocation_id` | INT | Not null |   |  **foreign key** to column `id` on table `mountLocation`. |
-| `mountDate` | DATETIME | Not null |   | Date of tire mounting |
-| `mountKm` | DOUBLE | Not null |   | Truck mileage on the mount |
+| `date` | DATETIME | Not null |   | Date of tire mounting |
+| `km` | DOUBLE | Not null |   | Truck mileage on the mount |
 
 
 ### Indices: 
@@ -158,16 +158,16 @@ ___
 | fk_mount_truck1_idx | `truck_id` | INDEX |   |
 ___
 
-##Table: `mountLocation`
+## Table: `mountLocation`
 
-###Description: `Physical location of the tire on the truck where it was mounted.`
+### Description: `Physical location of the tire on the truck where it was mounted.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
 | `id` | INT | PRIMARY, Auto increments, Not null |   | Internal identification of records for this table |
-| `mountLocation` | VARCHAR(200) | Not null |   | Mount location tire in the truck |
+| `name` | VARCHAR(200) | Not null |   | Mount location tire in the truck |
 
 
 ### Indices: 
@@ -177,16 +177,16 @@ ___
 | PRIMARY | `id` | PRIMARY |   |
 ___
 
-##Table: `unmountReason`
+## Table: `unmountReason`
 
-###Description: `The unmount have a reason. Ex: mechanical problems, end of life, factory problem, etc.`
+### Description: `The unmount have a reason. Ex: mechanical problems, end of life, factory problem, etc.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
 | `id` | INT | PRIMARY, Auto increments, Not null |   |   |
-| `unmountReason` | VARCHAR(200) | Not null |   | Reason for unmount the tire |
+| `name` | VARCHAR(200) | Not null |   | Reason for unmount the tire |
 | `description` | VARCHAR(1000) | Not null |   | Reason description |
 
 
@@ -197,11 +197,11 @@ ___
 | PRIMARY | `id` | PRIMARY |   |
 ___
 
-##Table: `truck`
+## Table: `truck`
 
-###Description: `Used to identify the truck that the tire will be mounted.`
+### Description: `Used to identify the truck that the tire will be mounted.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
@@ -216,20 +216,20 @@ ___
 | PRIMARY | `id` | PRIMARY |   |
 ___
 
-##Table: `unmount`
+## Table: `unmount`
 
-###Description: `This table is used to store an unmount.`
+### Description: `This table is used to store an unmount.`
 
-###Columns: 
+### Columns: 
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
-| `id` | INT | PRIMARY, Not null |   | Internal identification of records for this table |
+| `id` | INT | PRIMARY, Auto increments, Not null |   | Internal identification of records for this table |
 | `mount_id` | INT | Not null |   |  **foreign key** to column `id` on table `mount`. |
 | `unmountReason_id` | INT | Not null |   |  **foreign key** to column `id` on table `unmountReason`. |
-| `unmountDate` | DATETIME | Not null |   | Date of tire unmounting |
-| `unmountKm` | DOUBLE | Not null |   | Truck mileage on the unmount |
-| `unmountNote` | VARCHAR(1000) |  |   |   |
+| `date` | DATETIME | Not null |   | Date of tire unmounting |
+| `km` | DOUBLE | Not null |   | Truck mileage on the unmount |
+| `note` | VARCHAR(1000) |  |   |   |
 
 
 ### Indices: 
@@ -239,3 +239,4 @@ ___
 | PRIMARY | `id` | PRIMARY |   |
 | fk_mount_unmountReason1_idx | `unmountReason_id` | INDEX |   |
 | fk_unmount_mount1_idx | `mount_id` | INDEX |   |
+| mount_id_UNIQUE | `mount_id` | UNIQUE |   |

@@ -28,12 +28,12 @@
 ## <a name="#Columns"></a>Columns
 |Key|Name|Data Type|Length|Precision|Scale|Not Null|Auto Increment|Default|Virtual|Unsigned|Zerofill|Binary|Description
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---
-|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|False||False|False|False|False|Internal identification of records for this table|
+|[![Primary Key PRIMARY](Images/primarykey.svg)](#Indexes)[![Indexes PRIMARY](Images/index.svg)](#Indexes)|id|INT||11||True|True||False|False|False|False|Internal identification of records for this table|
 |[![Foreign Keys fk_mount_truck1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_truck1_idx](Images/index.svg)](#Indexes)|truck_id|INT||11||True|False||False|False|False|False||
 |[![Foreign Keys fk_mount_retread1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_retread1_idx](Images/index.svg)](#Indexes)|retread_id|INT||11||True|False||False|False|False|False||
 |[![Foreign Keys fk_mount_locationMount1: ](Images/foreignkey.svg)](#ForeignKeys)[![Indexes fk_mount_locationMount1_idx](Images/index.svg)](#Indexes)|mountLocation_id|INT||11||True|False||False|False|False|False||
-||mountDate|DATETIME||||True|False||False|False|False|False|Date of tire mounting|
-||mountKm|DOUBLE||||True|False||False|False|False|False|Truck mileage on the mount|
+||date|DATETIME||||True|False||False|False|False|False|Date of tire mounting|
+||km|DOUBLE||||True|False||False|False|False|False|Truck mileage on the mount|
 
 ## <a name="#Indexes"></a>Indexes
 |Key|Name|Columns|Unique|Type|Key Lengths
@@ -53,12 +53,12 @@
 ## <a name="#SqlScript"></a>SQL Script
 ```SQL
 CREATE TABLE mount (
-  id INT(11) NOT NULL COMMENT 'Internal identification of records for this table',
+  id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Internal identification of records for this table',
   truck_id INT(11) NOT NULL,
   retread_id INT(11) NOT NULL,
   mountLocation_id INT(11) NOT NULL,
-  mountDate DATETIME NOT NULL COMMENT 'Date of tire mounting',
-  mountKm DOUBLE NOT NULL COMMENT 'Truck mileage on the mount',
+  date DATETIME NOT NULL COMMENT 'Date of tire mounting',
+  km DOUBLE NOT NULL COMMENT 'Truck mileage on the mount',
   PRIMARY KEY (id),
   INDEX fk_mount_locationMount1_idx (mountLocation_id),
   INDEX fk_mount_retread1_idx (retread_id),
