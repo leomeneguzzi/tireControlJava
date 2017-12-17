@@ -24,19 +24,19 @@ public class MountLocation implements java.io.Serializable {
 
     @IgnoreTable
     private Integer id;
-    private String mountLocation;
+    private String name;
     @IgnoreTable
     private Set<Mount> mounts = new HashSet<Mount>(0);
 
     public MountLocation() {
     }
 
-    public MountLocation(String mountLocation) {
-        this.mountLocation = mountLocation;
+    public MountLocation(String name) {
+        this.name = name;
     }
 
-    public MountLocation(String mountLocation, Set<Mount> mounts) {
-        this.mountLocation = mountLocation;
+    public MountLocation(String name, Set<Mount> mounts) {
+        this.name = name;
         this.mounts = mounts;
     }
 
@@ -52,13 +52,13 @@ public class MountLocation implements java.io.Serializable {
         this.id = id;
     }
 
-    @Column(name = "mountLocation", nullable = false, length = 200)
-    public String getMountLocation() {
-        return this.mountLocation;
+    @Column(name = "name", nullable = false, length = 200)
+    public String getName() {
+        return this.name;
     }
 
-    public void setMountLocation(String mountLocation) {
-        this.mountLocation = mountLocation;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "mountLocation")
@@ -70,4 +70,8 @@ public class MountLocation implements java.io.Serializable {
         this.mounts = mounts;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

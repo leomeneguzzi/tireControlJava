@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,41 +25,42 @@ import utils.IgnoreTable;
 public class Unmount implements java.io.Serializable {
 
     @IgnoreTable
-    private int id;
+    private Integer id;
     private Mount mount;
     private UnmountReason unmountReason;
-    private Date unmountDate;
-    private double unmountKm;
-    private String unmountNote;
+    private Date date;
+    private double km;
+    private String note;
 
     public Unmount() {
     }
 
-    public Unmount(int id, Mount mount, UnmountReason unmountReason, Date unmountDate, double unmountKm) {
+    public Unmount(int id, Mount mount, UnmountReason unmountReason, Date date, double km) {
         this.id = id;
         this.mount = mount;
         this.unmountReason = unmountReason;
-        this.unmountDate = unmountDate;
-        this.unmountKm = unmountKm;
+        this.date = date;
+        this.km = km;
     }
 
-    public Unmount(int id, Mount mount, UnmountReason unmountReason, Date unmountDate, double unmountKm, String unmountNote) {
+    public Unmount(int id, Mount mount, UnmountReason unmountReason, Date date, double km, String note) {
         this.id = id;
         this.mount = mount;
         this.unmountReason = unmountReason;
-        this.unmountDate = unmountDate;
-        this.unmountKm = unmountKm;
-        this.unmountNote = unmountNote;
+        this.date = date;
+        this.km = km;
+        this.note = note;
     }
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
 
     @Column(name = "id", unique = true, nullable = false)
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -82,31 +85,36 @@ public class Unmount implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "unmountDate", nullable = false, length = 19)
-    public Date getUnmountDate() {
-        return this.unmountDate;
+    @Column(name = "date", nullable = false, length = 19)
+    public Date getDate() {
+        return this.date;
     }
 
-    public void setUnmountDate(Date unmountDate) {
-        this.unmountDate = unmountDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    @Column(name = "unmountKm", nullable = false, precision = 22, scale = 0)
-    public double getUnmountKm() {
-        return this.unmountKm;
+    @Column(name = "km", nullable = false, precision = 22, scale = 0)
+    public double getKm() {
+        return this.km;
     }
 
-    public void setUnmountKm(double unmountKm) {
-        this.unmountKm = unmountKm;
+    public void setKm(double km) {
+        this.km = km;
     }
 
-    @Column(name = "unmountNote", length = 1000)
-    public String getUnmountNote() {
-        return this.unmountNote;
+    @Column(name = "note", length = 1000)
+    public String getNote() {
+        return this.note;
     }
 
-    public void setUnmountNote(String unmountNote) {
-        this.unmountNote = unmountNote;
+    public void setNote(String note) {
+        this.note = note;
     }
 
+    @Override
+    public String toString() {
+        return "Unmount{" + "id=" + id + ", mount=" + mount + ", unmountReason=" + unmountReason + ", date=" + date + ", km=" + km + ", note=" + note + '}';
+    }
+    
 }

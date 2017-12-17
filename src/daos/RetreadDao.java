@@ -6,15 +6,30 @@
 package daos;
 
 import entities.Retread;
+import entities.Tire;
+import java.util.List;
 
 /**
  *
  * @author leonardo
  */
-public class RetreadDao extends AbstractDao<Retread>{
-    
-    public RetreadDao(){
+public class RetreadDao extends AbstractDao<Retread> {
+
+    public RetreadDao() {
         super(Retread.class);
     }
-    
+
+    public List<Retread> findByTire(Tire tire) {
+        try {
+            if (!sessionFactory.getCurrentSession().getTransaction().isActive()) {
+                sessionFactory.getCurrentSession().getTransaction().begin();
+            }
+            return sessionFactory.getCurrentSession().createQuery(
+                    "from " + entityClass.getName() + " where tire_id = " + tire.getId()
+            ).list();
+        } catch (RuntimeException re) {
+            return null;
+        }
+    }
+
 }

@@ -70,4 +70,8 @@ public class TireModel implements java.io.Serializable {
         this.tires = tires;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

@@ -31,60 +31,64 @@ public abstract class AbstractController implements Initializable {
 
     public void initializeView() {
         for (EncapsulatedView encapView : encapViews) {
+            if(encapView.getApTableView() == null) continue;
             encapView.setTableView(ModelTableViewBuilder.buildUpon(encapView.getEntity().getClass(), encapView.getApTableView()));
             encapView.getTableView().setOnMouseClicked((MouseEvent event) -> {
-                if(encapView.getTableView().getSelectionModel().getSelectedItem() != null){
+                if (encapView.getTableView().getSelectionModel().getSelectedItem() != null) {
                     encapView.setEntity(encapView.getEntity().getClass().cast(encapView.getTableView().getSelectionModel().getSelectedItem()));
+                    encapView.getForm().setSource(encapView.getEntity());
                 }
             });
-            encapView.getTableView().setItems(FXCollections.observableArrayList(encapView.getDao().findAll()));
-            createForm(encapView);
         }
+        encapViews.get(0).getTableView().setItems(FXCollections.observableArrayList(encapViews.get(0).getDao().findAll()));
+        createForm();
     }
 
-    private void createForm(EncapsulatedView encapView) {
+    protected void createForm() {
         Button btSave = new Button(bundle.getString("save"));
         btSave.setOnAction((ActionEvent event) -> {
-            encapView.getDao().save(encapView.getEntity());
-            if (!encapView.getTableView().getItems().contains(encapView.getEntity())) {
-                encapView.getTableView().getItems().add(encapView.getEntity());
+            encapViews.get(0).getDao().save(encapViews.get(0).getEntity());
+            if (!encapViews.get(0).getTableView().getItems().contains(encapViews.get(0).getEntity())) {
+                encapViews.get(0).getTableView().getItems().add(encapViews.get(0).getEntity());
             }
-            encapView.getTableView().refresh();
+            encapViews.get(0).getTableView().refresh();
         });
 
         Button btDelete = new Button(bundle.getString("delete"));
         btDelete.setOnAction((ActionEvent event) -> {
-            encapView.getDao().delete(encapView.getEntity());
-            if (encapView.getTableView().getItems().contains(encapView.getEntity())) {
-                encapView.getTableView().getItems().remove(encapView.getEntity());
+            encapViews.get(0).getDao().delete(encapViews.get(0).getEntity());
+            if (encapViews.get(0).getTableView().getItems().contains(encapViews.get(0).getEntity())) {
+                encapViews.get(0).getTableView().getItems().remove(encapViews.get(0).getEntity());
             }
-            encapView.getTableView().refresh();
+            encapViews.get(0).getTableView().refresh();
         });
 
         Button btClean = new Button(bundle.getString("clean"));
         btClean.setOnAction((ActionEvent event) -> {
             try {
-                encapView.setEntity(encapView.getEntity().getClass().newInstance());
+                encapViews.get(0).setEntity(encapViews.get(0).getEntity().getClass().newInstance());
+                encapViews.get(0).getForm().setSource(encapViews.get(0).getEntity());
             } catch (InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(AbstractController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
 
-        encapView.setForm(new FXFormBuilder<>()
-                .source(encapView.getEntity())
-                .include(encapView.getIncludes())
+        encapViews.get(0).setForm(new FXFormBuilder<>()
+                .source(encapViews.get(0).getEntity())
+                .includeAndReorder(encapViews.get(0).getIncludes())
                 .resourceBundle(bundle)
                 .build()
         );
 
-        encapView.getForm().setLayoutY(20);
-        encapView.getForm().setLayoutX(50);
+        encapViews.get(0).getForm().setLayoutY(20);
+        encapViews.get(0).getForm().setLayoutX(50);
         btSave.setLayoutY(50);
         btSave.setLayoutX(400);
         btClean.setLayoutY(100);
         btClean.setLayoutX(400);
         btDelete.setLayoutY(150);
         btDelete.setLayoutX(400);
-        encapView.getApForm().getChildren().addAll(encapView.getForm(), btSave, btDelete, btClean);
+        encapViews.get(0).getApForm().getChildren().addAll(encapViews.get(0).getForm(), btSave, btDelete, btClean);
     }
+
 }

@@ -39,7 +39,7 @@ public class MountLocationController extends AbstractController {
                             .apTableView(this.apTableView)
                             .dao(new MountLocationDao())
                             .entity(new MountLocation())
-                            .includes(new String[]{"mountLocation"})
+                            .includes(new String[]{"name"})
                             .build()
             );
         } catch (IllegalAccessException | InstantiationException ex) {

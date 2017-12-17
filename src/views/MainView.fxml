@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controllers.MainController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
   <children>
     <MenuBar id="menubar" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="Cadastros">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Marca do pneu" fx:id="miTireBrand" />
-            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Modelo do pneu" fx:id="miTireModel" />
-            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Situação do pneu" fx:id="miTireSituation" />
-            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Tipo da banda" fx:id="miBandType" />
-            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Local de montagem" fx:id="miMountLocation" />
-            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Caminhão" fx:id="miTruck" />
-            <MenuItem mnemonicParsing="false" onAction="#handleMI" text="Razão da desmontagem" fx:id="miUnmountReason" />
+            <MenuItem fx:id="miTireBrand" mnemonicParsing="false" onAction="#handleMI" text="Marca do pneu" />
+            <MenuItem fx:id="miTireModel" mnemonicParsing="false" onAction="#handleMI" text="Modelo do pneu" />
+            <MenuItem fx:id="miTireSituation" mnemonicParsing="false" onAction="#handleMI" text="Situação do pneu" />
+            <MenuItem fx:id="miBandType" mnemonicParsing="false" onAction="#handleMI" text="Tipo da banda" />
+            <MenuItem fx:id="miMountLocation" mnemonicParsing="false" onAction="#handleMI" text="Local de montagem" />
+            <MenuItem fx:id="miTruck" mnemonicParsing="false" onAction="#handleMI" text="Caminhão" />
+            <MenuItem fx:id="miUnmountReason" mnemonicParsing="false" onAction="#handleMI" text="Razão da desmontagem" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Controles">
+          <items>
+            <MenuItem fx:id="miTire" mnemonicParsing="false" onAction="#handleMI" text="Pneu" />
+                  <MenuItem fx:id="miUnmount" mnemonicParsing="false" onAction="#handleMI" text="Desmontagem" />
           </items>
         </Menu>
       </menus>

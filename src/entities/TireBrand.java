@@ -81,4 +81,8 @@ public class TireBrand implements java.io.Serializable {
         this.tires = tires;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

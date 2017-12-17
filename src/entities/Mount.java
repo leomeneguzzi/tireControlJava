@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,44 +28,50 @@ import utils.IgnoreTable;
 public class Mount implements java.io.Serializable {
 
     @IgnoreTable
-    private int id;
+    private Integer id;
     private MountLocation mountLocation;
+    @IgnoreTable
     private Retread retread;
     private Truck truck;
-    private Date mountDate;
-    private double mountKm;
+    private Date date;
+    private double km;
+    @IgnoreTable
     private Set<Unmount> unmounts = new HashSet<Unmount>(0);
 
     public Mount() {
+        this.mountLocation = new MountLocation();
+        this.retread = new Retread();
+        this.truck = new Truck();
     }
 
-    public Mount(int id, MountLocation mountLocation, Retread retread, Truck truck, Date mountDate, double mountKm) {
+    public Mount(int id, MountLocation mountLocation, Retread retread, Truck truck, Date date, double km) {
         this.id = id;
         this.mountLocation = mountLocation;
         this.retread = retread;
         this.truck = truck;
-        this.mountDate = mountDate;
-        this.mountKm = mountKm;
+        this.date = date;
+        this.km = km;
     }
 
-    public Mount(int id, MountLocation mountLocation, Retread retread, Truck truck, Date mountDate, double mountKm, Set<Unmount> unmounts) {
+    public Mount(int id, MountLocation mountLocation, Retread retread, Truck truck, Date date, double km, Set<Unmount> unmounts) {
         this.id = id;
         this.mountLocation = mountLocation;
         this.retread = retread;
         this.truck = truck;
-        this.mountDate = mountDate;
-        this.mountKm = mountKm;
+        this.date = date;
+        this.km = km;
         this.unmounts = unmounts;
     }
 
     @Id
-
+    @GeneratedValue(strategy = IDENTITY)
+    
     @Column(name = "id", unique = true, nullable = false)
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -98,22 +106,22 @@ public class Mount implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "mountDate", nullable = false, length = 19)
-    public Date getMountDate() {
-        return this.mountDate;
+    @Column(name = "date", nullable = false, length = 19)
+    public Date getDate() {
+        return this.date;
     }
 
-    public void setMountDate(Date mountDate) {
-        this.mountDate = mountDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    @Column(name = "mountKm", nullable = false, precision = 22, scale = 0)
-    public double getMountKm() {
-        return this.mountKm;
+    @Column(name = "km", nullable = false, precision = 22, scale = 0)
+    public double getKm() {
+        return this.km;
     }
 
-    public void setMountKm(double mountKm) {
-        this.mountKm = mountKm;
+    public void setKm(double km) {
+        this.km = km;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "mount")

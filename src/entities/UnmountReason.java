@@ -24,7 +24,7 @@ public class UnmountReason implements java.io.Serializable {
 
     @IgnoreTable
     private Integer id;
-    private String unmountReason;
+    private String name;
     private String description;
     @IgnoreTable
     private Set<Unmount> unmounts = new HashSet<Unmount>(0);
@@ -32,13 +32,13 @@ public class UnmountReason implements java.io.Serializable {
     public UnmountReason() {
     }
 
-    public UnmountReason(String unmountReason, String description) {
-        this.unmountReason = unmountReason;
+    public UnmountReason(String name, String description) {
+        this.name = name;
         this.description = description;
     }
 
-    public UnmountReason(String unmountReason, String description, Set<Unmount> unmounts) {
-        this.unmountReason = unmountReason;
+    public UnmountReason(String name, String description, Set<Unmount> unmounts) {
+        this.name = name;
         this.description = description;
         this.unmounts = unmounts;
     }
@@ -55,13 +55,13 @@ public class UnmountReason implements java.io.Serializable {
         this.id = id;
     }
 
-    @Column(name = "unmountReason", nullable = false, length = 200)
-    public String getUnmountReason() {
-        return this.unmountReason;
+    @Column(name = "name", nullable = false, length = 200)
+    public String getName() {
+        return this.name;
     }
 
-    public void setUnmountReason(String unmountReason) {
-        this.unmountReason = unmountReason;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Column(name = "description", nullable = false, length = 1000)
@@ -81,5 +81,5 @@ public class UnmountReason implements java.io.Serializable {
     public void setUnmounts(Set<Unmount> unmounts) {
         this.unmounts = unmounts;
     }
-
+    
 }

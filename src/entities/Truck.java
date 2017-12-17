@@ -70,4 +70,11 @@ public class Truck implements java.io.Serializable {
         this.mounts = mounts;
     }
 
+    @Override
+    public String toString() {
+        return this.plate;
+    }
+    
+    
+    
 }

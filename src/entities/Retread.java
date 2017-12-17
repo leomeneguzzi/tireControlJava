@@ -29,14 +29,18 @@ public class Retread implements java.io.Serializable {
 
     @IgnoreTable
     private Integer id;
-    private BandType bandType;
-    private Tire tire;
+    private BandType bandType = new BandType();
+    @IgnoreTable
+    private Tire tire = new Tire();
     private int number;
     private Date date;
     private double value;
+    @IgnoreTable
     private Set<Mount> mounts = new HashSet<Mount>(0);
 
     public Retread() {
+        this.tire = new Tire();
+        this.bandType = new BandType();
     }
 
     public Retread(BandType bandType, Tire tire, int number, Date date, double value) {
@@ -125,4 +129,8 @@ public class Retread implements java.io.Serializable {
         this.mounts = mounts;
     }
 
+    @Override
+    public String toString() {
+        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -5,16 +5,20 @@
  */
 package utils;
 
-import com.sun.org.apache.xpath.internal.operations.Equals;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.sql.Timestamp;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeSet;
+import javafx.scene.control.TableCell;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -51,12 +55,27 @@ public class ModelTableViewBuilder extends TableView {
             String setterName = "set" + capitalizeFirst(fieldName);
             boolean notAnnotated = field.getAnnotation(IgnoreTable.class) == null;
 
-            if (notAnnotated && methodNames.contains(getterName)
+            if (notAnnotated
+                    && methodNames.contains(getterName)
                     && methodNames.contains(setterName)) {
                 TableColumn column = new TableColumn(columnName);
                 column.setCellValueFactory(getCellFactory(model,
                         field.getType(),
                         fieldName));
+                if (field.getType() == Date.class) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    column.setCellFactory(tc -> new TableCell<T, Date>() {
+                        @Override
+                        protected void updateItem(Date date, boolean empty) {
+                            super.updateItem(date, empty);
+                            if (empty) {
+                                setText(null);
+                            } else {
+                                setText(formatter.format(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
+                            }
+                        }
+                    });
+                }
                 columns.add(column);
             }
         }

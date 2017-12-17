@@ -39,7 +39,7 @@ public class UnmountReasonController extends AbstractController {
                             .apTableView(this.apTableView)
                             .dao(new UnmountReasonDao())
                             .entity(new UnmountReason())
-                            .includes(new String[]{"unmountReason","description"})
+                            .includes(new String[]{"name","description"})
                             .build()
             );
         } catch (IllegalAccessException | InstantiationException ex) {

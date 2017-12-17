@@ -17,7 +17,7 @@ import utils.HibernateUtil;
 @SuppressWarnings("unchecked")
 public abstract class AbstractDao<T> {
 
-    private Class<T> entityClass;
+    protected Class<T> entityClass;
     protected final SessionFactory sessionFactory = HibernateUtil
             .getSessionFactory();
 

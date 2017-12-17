@@ -27,7 +27,7 @@ public class EncapsulatedView<E> {
     private FXForm<E> form;
 
     private String includes[];
-
+    
     public EncapsulatedView(EncapsulatedViewBuilder EncapViewBuilder) throws IllegalAccessException, InstantiationException {
         this.apForm = EncapViewBuilder.apForm;
         this.apTableView = EncapViewBuilder.apTableView;
@@ -58,7 +58,6 @@ public class EncapsulatedView<E> {
 
     public void setEntity(E entity) {
         this.entity = entity;
-        this.getForm().setSource(this.entity);
     }
 
     public AbstractDao getDao() {
@@ -92,7 +91,7 @@ public class EncapsulatedView<E> {
     public void setIncludes(String[] includes) {
         this.includes = includes;
     }
-
+    
     public static class EncapsulatedViewBuilder<E> {
 
         //private Class<E> entityClass;
@@ -133,7 +132,7 @@ public class EncapsulatedView<E> {
             this.includes = includes;
             return this;
         }
-
+        
         public EncapsulatedView<E> build() throws IllegalAccessException, InstantiationException {
             return new EncapsulatedView<>(this);
         }

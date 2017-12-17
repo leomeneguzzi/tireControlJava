@@ -26,11 +26,12 @@ public class Tire implements java.io.Serializable {
 
     @IgnoreTable
     private Integer id;
-    private TireBrand tireBrand;
-    private TireModel tireModel;
-    private TireSituation tireSituation;
+    private TireBrand tireBrand = new TireBrand();
+    private TireModel tireModel = new TireModel();
+    private TireSituation tireSituation = new TireSituation();
     private int physicalIdentification;
     private int expectedNumberRetreads;
+    @IgnoreTable
     private Set<Retread> retreads = new HashSet<Retread>(0);
 
     public Tire() {
@@ -120,6 +121,11 @@ public class Tire implements java.io.Serializable {
 
     public void setRetreads(Set<Retread> retreads) {
         this.retreads = retreads;
+    }
+
+    @Override
+    public String toString() {
+        return "" + this.physicalIdentification;
     }
 
 }

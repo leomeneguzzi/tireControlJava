@@ -70,4 +70,11 @@ public class BandType implements java.io.Serializable {
         this.retreads = retreads;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+    
+    
+
 }
