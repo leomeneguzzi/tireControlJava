@@ -311,7 +311,7 @@ public class TireController extends AbstractController {
         dtMount.setConverter(new StringConverter<LocalDate>() {
             String pattern = "dd/MM/yyyy";
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
-            {dtRetread.setPromptText(pattern.toLowerCase());}
+            {dtMount.setPromptText(pattern.toLowerCase());}
 
             @Override
             public String toString(LocalDate date) {

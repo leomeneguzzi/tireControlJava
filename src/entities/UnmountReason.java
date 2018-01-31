@@ -81,5 +81,9 @@ public class UnmountReason implements java.io.Serializable {
     public void setUnmounts(Set<Unmount> unmounts) {
         this.unmounts = unmounts;
     }
-    
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

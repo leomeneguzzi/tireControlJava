@@ -56,14 +56,9 @@ public class UnmountController extends AbstractController {
     private DatePicker dtUnmount;
     @FXML
     private TextArea txtNote;
-    
-    private TextField txtIdUnmount;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-
-        this.txtIdUnmount = new TextField();
 
         this.encapViews = new ArrayList<>();
         try {
@@ -122,16 +117,14 @@ public class UnmountController extends AbstractController {
         });
 
         BeanPathAdapter<Unmount> unmountPA = new BeanPathAdapter<>((Unmount) encapViews.get(1).getEntity());
-        unmountPA.bindBidirectional("id", txtIdUnmount.textProperty());
         unmountPA.bindBidirectional("unmountReason", cbUnmountReason.valueProperty(), UnmountReason.class);
         unmountPA.bindBidirectional("km", txtKm.textProperty());
         unmountPA.bindBidirectional("note", txtNote.textProperty());
-        
+         
         dtUnmount.valueProperty().addListener((Observable observable) -> {
            unmountPA.getBean().setDate(Date.from(dtUnmount.valueProperty().getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         });
-
-        ((Unmount) encapViews.get(1).getEntity()).setId(null);
+            
 
         encapViews.get(0).getTableView().setOnMouseClicked((MouseEvent event) -> {
             if (encapViews.get(0).getTableView().getSelectionModel().getSelectedItem() != null) {
@@ -140,33 +133,18 @@ public class UnmountController extends AbstractController {
                 encapViews.get(1).setEntity(u);
                 if(encapViews.get(1).getEntity() == null) {
                     encapViews.get(1).setEntity(new Unmount());
+                    unmountPA.setBean((Unmount)encapViews.get(1).getEntity());
                     ((Unmount)encapViews.get(1).getEntity()).setMount((Mount) encapViews.get(0).getEntity());
-                    
+                    unmountPA.getBean().setDate(Date.from(dtUnmount.valueProperty().getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                }else{
+                    unmountPA.setBean((Unmount)encapViews.get(1).getEntity());
+                    dtUnmount.setValue(((Unmount)encapViews.get(1).getEntity()).getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
                 }
-                unmountPA.setBean((Unmount)encapViews.get(1).getEntity());
-                unmountPA.getBean().setDate(Date.from(dtUnmount.valueProperty().getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-                if(((Unmount) encapViews.get(1).getEntity()).getId() == 0){
-                   ((Unmount) encapViews.get(1).getEntity()).setId(null); 
-                }
-                System.out.println(encapViews.get(1).getEntity());
             }
         });
 
         this.btSave.setOnAction((ActionEvent event) -> {
-            System.out.println(encapViews.get(1).getEntity());
             encapViews.get(1).getDao().save(encapViews.get(1).getEntity());
         });
-    }
-    
-    private void cleanForm(){
-        try {
-                encapViews.get(1).setEntity(encapViews.get(1).getEntity().getClass().newInstance());
-                //unmountPA.setBean((Unmount) encapViews.get(1).getEntity());
-                
-                ((Unmount) encapViews.get(1).getEntity()).setId(null);
-
-            } catch (InstantiationException | IllegalAccessException ex) {
-                Logger.getLogger(AbstractController.class.getName()).log(Level.SEVERE, null, ex);
-            }
     }
 }

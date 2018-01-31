@@ -5,8 +5,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,7 +23,6 @@ import utils.IgnoreTable;
 public class Unmount implements java.io.Serializable {
 
     @IgnoreTable
-    private Integer id;
     private Mount mount;
     private UnmountReason unmountReason;
     private Date date;
@@ -35,16 +32,14 @@ public class Unmount implements java.io.Serializable {
     public Unmount() {
     }
 
-    public Unmount(int id, Mount mount, UnmountReason unmountReason, Date date, double km) {
-        this.id = id;
+    public Unmount(Mount mount, UnmountReason unmountReason, Date date, double km) {
         this.mount = mount;
         this.unmountReason = unmountReason;
         this.date = date;
         this.km = km;
     }
 
-    public Unmount(int id, Mount mount, UnmountReason unmountReason, Date date, double km, String note) {
-        this.id = id;
+    public Unmount(Mount mount, UnmountReason unmountReason, Date date, double km, String note) {
         this.mount = mount;
         this.unmountReason = unmountReason;
         this.date = date;
@@ -53,16 +48,6 @@ public class Unmount implements java.io.Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-
-    @Column(name = "id", unique = true, nullable = false)
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mount_id", nullable = false)
@@ -114,7 +99,7 @@ public class Unmount implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Unmount{" + "id=" + id + ", mount=" + mount + ", unmountReason=" + unmountReason + ", date=" + date + ", km=" + km + ", note=" + note + '}';
+        return "Unmount{id=" +mount.getId() +", mount=" + mount + ", unmountReason=" + unmountReason + ", date=" + date + ", km=" + km + ", note=" + note + '}';
     }
     
 }
