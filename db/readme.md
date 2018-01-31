@@ -224,8 +224,7 @@ ___
 
 | Column | Data type | Attributes | Default | Description |
 | --- | --- | --- | --- | ---  |
-| `id` | INT | PRIMARY, Auto increments, Not null |   | Internal identification of records for this table |
-| `mount_id` | INT | Not null |   |  **foreign key** to column `id` on table `mount`. |
+| `mount_id` | INT | PRIMARY, Not null |   |  **foreign key** to column `id` on table `mount`. |
 | `unmountReason_id` | INT | Not null |   |  **foreign key** to column `id` on table `unmountReason`. |
 | `date` | DATETIME | Not null |   | Date of tire unmounting |
 | `km` | DOUBLE | Not null |   | Truck mileage on the unmount |
@@ -236,7 +235,6 @@ ___
 
 | Name | Columns | Type | Description |
 | --- | --- | --- | --- |
-| PRIMARY | `id` | PRIMARY |   |
+| PRIMARY | `mount_id` | PRIMARY |   |
 | fk_mount_unmountReason1_idx | `unmountReason_id` | INDEX |   |
 | fk_unmount_mount1_idx | `mount_id` | INDEX |   |
-| mount_id_UNIQUE | `mount_id` | UNIQUE |   |
